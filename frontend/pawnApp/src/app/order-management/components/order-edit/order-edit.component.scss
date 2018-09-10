@@ -1,0 +1,37 @@
+.ordEdit-container {
+    padding: 20px;
+    button{
+        padding-left: 10px;
+    }
+
+    
+    .button-inside{
+        position:absolute;
+        right: 20px;
+        top: 6px;
+        border:none;
+        height:20px;
+        width:20px;
+        border-radius:100%;
+        outline:none;
+        text-align:center;
+        font-weight:bold;
+        padding:2px;
+      }
+
+      .button-inside:hover{
+        cursor:pointer;
+      }
+
+    //   .ng-invalid{
+    //     border-color: red;
+    //   }
+    .is-valid{
+        border-color: green;
+    }
+    .is-invalid{
+        border-color: red;
+    }
+
+   
+}

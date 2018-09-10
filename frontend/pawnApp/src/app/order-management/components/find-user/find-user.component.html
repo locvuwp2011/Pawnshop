@@ -1,0 +1,61 @@
+<div class="container find-user-container">
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" (click)="openFindDialog()">Find User</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Find User</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row find-criteria">
+            <span>Find by: </span>
+            <select name="findOption" id="ddFindByOption" [(ngModel)]="ddFindOptionValue">
+              <option value="">Select option to find</option>
+              <option value="Name">Fullname</option>
+              <option value="Identify">Identify</option>
+              <option value="PhoneNumber">Phone Number</option>
+              <option value="Email">Email</option>
+            </select>
+            <input type="text" name="txtFindValue" id="txtFindValue" [(ngModel)]="txtFindValue" />
+            <button class="btn btn-primary" (click)="find_click()">Find</button>
+          </div>
+          <div class="row find-result" *ngIf="userResults">
+            <h3>Results</h3>
+            <span *ngIf="userResults.length === 0" class="">No USER match criteria</span>
+            <table class="table table-striped" *ngIf="userResults.length > 0">
+              <thead>
+                <th>Fullname</th>
+                <th>Identifier</th>
+                <th>Phone Number</th>
+                <th>Address</th>
+                <th></th>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of userResults">
+                  <td>{{user.Fullname}}</td>
+                  <td>{{user.Identifier}}</td>
+                  <td>{{user.PhoneNumber}}</td>
+                  <td>{{user.Address}}</td>
+                  <td>
+                    <button class="btn btn-warning" (click)="pickUser(user)" data-dismiss="modal">Pick</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

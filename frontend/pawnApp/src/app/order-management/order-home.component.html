@@ -1,0 +1,24 @@
+<div class="container">
+
+  <h3> Order Management </h3>
+
+  <input type="button" value="Create Order" (click)="setDisplayOrderEdit(true, 'Create')" *ngIf="!openEditOrder">
+  <input type="button" value="Cancel" (click)="setDisplayOrderEdit(false)" *ngIf="openEditOrder">
+  <app-order-edit *ngIf="openEditOrder" [orderEditing]="orderEditing" (orderEmitter)="orderEditEvent($event)"></app-order-edit>
+  <app-order-list [date]="currentDate" (selectOrderEmitter)="selectOrderEvent($event)" [title]="orderTodayTitle"></app-order-list>
+  
+  <div class="row">
+      <app-order-list (selectOrderEmitter)="selectOrderEvent($event)" title="Warning Orders" orderType="Warning"></app-order-list>
+  </div>
+
+  <div class="row">
+      <app-order-list (selectOrderEmitter)="selectOrderEvent($event)" title="Expired Orders" orderType="Expired"></app-order-list>
+  </div>
+
+  <!--Donglai-->
+  <app-charge-period *ngIf="openDongLai" [orderEditing]="orderEditing" (fireEvent)="catchChangePeriod($event)"></app-charge-period>
+
+  <!--ThanhLy | Closed-->
+  <app-close-order *ngIf="openCloseOrder" [orderEditing]="orderEditing" (fireEvent)="catchCloseOrder($event)"></app-close-order>
+
+</div>

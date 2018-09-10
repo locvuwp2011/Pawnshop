@@ -1,0 +1,41 @@
+<div class="ordlist-container">
+  <div class="row order-home-header">
+    <p>
+      <!-- Today - {{currentDate | date:'dd/MM/yyyy' }} -->
+      {{title}}
+    </p>
+  </div>
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <th>#</th>
+        <th>Custome Name</th>
+        <th>Product Type</th>
+        <th>Amount</th>
+        <th>Status</th>        
+        <th>Actions</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ord of ords; let ixd = index">
+          <td>
+            <a href="javascript:void(0);" (click)="editOrder(ord)">{{ixd+1}}</a>            
+          </td>
+          <td>{{ord.Fullname}}</td>
+          <td>{{ord.ProductType}}</td>
+          <td>{{ord.Amount}}</td>
+          <td>{{ord.Status}}</td>          
+          <td>
+            <a href="javascript:void(0)" (click)="dongLai_click(ord)">DongLai</a> |
+            <a href="javascript:void(0)" (click)="closeOrder_click(ord)">ThanhLy</a> |            
+            <a href="javascript:void(0)" (click)="editOrder(ord)">Edit</a>
+          </td>
+        </tr>
+        <tr *ngIf="!ords">
+          <td colspan="6">
+            Orders is empty
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

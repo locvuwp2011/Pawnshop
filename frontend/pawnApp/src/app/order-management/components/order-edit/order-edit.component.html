@@ -1,0 +1,90 @@
+<div class="ordEdit-container">
+    <h4>{{status}} Order</h4>
+    <h4 *ngIf="orderEditing">{{orderEditing.OrderID}}</h4>
+    <h4 *ngIf="errorMessage">{{errorMessage}}</h4>
+    <hr/>
+    <app-find-user (fireEvent)="catchFindUser($event)"></app-find-user>
+    <form action="" [formGroup]="orderForm" (ngSubmit)="save()">
+        <div class="row form-group">
+            <div class="col-lg-3">Full Name *</div>
+            <div class="col-lg-9">              
+                <input type="text" class="form-control" name="fullname" id="txtFullname" placeholder="Full Name" formControlName="Fullname" [ngClass]="isValid('Fullname')">
+                <button id="btnLookupCustomer" class="button-inside" style="z-index: 999" tabindex="999"><span class="glyphicon glyphicon-search"></span></button>
+            </div>            
+        </div>
+
+        <div class="row form-group">
+            <div class="col-lg-3">ID Number / Passport ID</div>
+            <div class="col-lg-3">
+                <input type="text" class="form-control" name="identifier" id="txtIdentifier" placeholder="ID Number / Passport ID" formControlName="Identify">
+            </div>
+            <div class="col-lg-3">Phone Number *</div>
+            <div class="col-lg-3">
+                <input type="text" class="form-control" name="phonenumber" id="txtPhoneNumber" placeholder="Phone Number" formControlName="PhoneNumber" [ngClass]="isValid('PhoneNumber')">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-lg-3">Product Type *</div>
+            <div class="col-lg-3">
+                <select name="producttype" id="ddProductType" class="form-control" formControlName="ProductType" [ngClass]="isValid('ProductType')">
+                    <option value="">--Select Product Type--</option>
+                    <option value="Phone">Phone</option>
+                    <option value="Tablet">Tablet</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Camera">Camera</option>
+                    <option value="Bike">Bike</option>
+                    <option value="Car">Car</option>
+                    <option value="Gold">Gold</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="col-lg-3">Address</div>
+            <div class="col-lg-3">
+                <input type="text" class="form-control" name="address" id="txtAddress" placeholder="Address" formControlName="Address" [ngClass]="isValid('Address')">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-lg-3">Description</div>
+            <div class="col-lg-9">
+                <textarea class="form-control" name="description" id="txtDescription" cols="30" rows="10" placeholder="Description" formControlName="Description"></textarea>
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-lg-3">Amount</div>
+            <div class="col-lg-9">
+                <input type="number" class="form-control" name="amount" id="txtAmount" placeholder="Amount" formControlName="Amount" [ngClass]="isValid('Amount')">
+            </div>            
+        </div>
+
+        <div class="row form-group">
+            <div class="col-lg-3">Rate</div>
+            <div class="col-lg-2"><input type="number" class="form-control" name="rate1" id="txtRate1" placeholder="Week 1" value="2" formControlName="Rate1"></div>
+            <div class="col-lg-2"><input type="number" class="form-control" name="rate2" id="txtRate2" placeholder="Week 2" value="3" formControlName="Rate2"></div>
+            <div class="col-lg-2"><input type="number" class="form-control" name="rate3" id="txtRate3" placeholder="Week 3" value="4"  formControlName="Rate3"></div>
+            <div class="col-lg-2"><input type="number" class="form-control" name="rate4" id="txtRate4" placeholder="Week 4" value="5"  formControlName="Rate4"></div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-lg-3">Extra Fee</div>
+            <div class="col-lg-9">
+                <input type="number" class="form-control" name="extrafee" id="txtExtraFee" placeholder="Extra Fee"  formControlName="ExtraFee">
+            </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-lg-3">Note</div>
+            <div class="col-lg-9"><textarea class="form-control" name="note" id="txtNote" cols="30" rows="10" placeholder="Note" formControlName="Note"></textarea></div>            
+        </div>
+
+        <div class="row form-group">
+            <div class="col-lg-12" style="text-align: right">
+                <button type="button" class="btn btn-primary" (click)="save()">Save</button>&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-secondary" (click)="reset()">Reset</button>&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-secondary" (click)="cancel()">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
